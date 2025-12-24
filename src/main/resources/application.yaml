@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: shellproject
+  shell:
+    interactive:
+      enabled: true
+    script:
+      enabled: true

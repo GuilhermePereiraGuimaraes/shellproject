@@ -1,0 +1,5 @@
+1766584371765:greet --name "guilherme"
+1766584471842:greet ----name "gui"
+1766584527200:greet -n "gui"
+1766584575171:help
+1766584721794:greet -n "gui"
