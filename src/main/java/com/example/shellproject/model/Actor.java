@@ -55,4 +55,16 @@ public class Actor {
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", displayLogin='" + displayLogin + '\'' +
+                ", gravatarId='" + gravatarId + '\'' +
+                ", url='" + url + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                '}';
+    }
 }
