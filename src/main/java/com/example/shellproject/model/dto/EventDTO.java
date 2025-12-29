@@ -3,6 +3,8 @@ package com.example.shellproject.model.dto;
 import com.example.shellproject.util.EventType;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import java.util.Objects;
+
 public class EventDTO {
     private String actor;
     private EventType eventType;
@@ -49,5 +51,27 @@ public class EventDTO {
 
     public void setPayload(JsonNode payload) {
         this.payload = payload;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        EventDTO dto = (EventDTO) o;
+        return Objects.equals(actor, dto.actor) && eventType == dto.eventType && Objects.equals(repoName, dto.repoName) && Objects.equals(payload, dto.payload);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(actor, eventType, repoName, payload);
+    }
+
+    @Override
+    public String toString() {
+        return "EventDTO{" +
+                "actor='" + actor + '\'' +
+                ", eventType=" + eventType +
+                ", repoName='" + repoName + '\'' +
+                ", payload=" + payload +
+                '}';
     }
 }
