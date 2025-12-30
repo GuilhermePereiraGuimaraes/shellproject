@@ -3,17 +3,17 @@ package com.example.shellproject.model.dto;
 import com.example.shellproject.util.EventType;
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class EventMemberDTO extends EventDTO {
+public class EventPullRequestReviewCommentDTO extends EventDTO{
     private String action;
-    private String memberName;
+    private Integer number;
 
-    public EventMemberDTO() {
+    public EventPullRequestReviewCommentDTO() {
     }
 
-    public EventMemberDTO(String actor, EventType eventType, String repoName, JsonNode payload, String action, String memberName) {
+    public EventPullRequestReviewCommentDTO(String actor, EventType eventType, String repoName, JsonNode payload, String action, Integer number) {
         super(actor, eventType, repoName, payload);
         this.action = action;
-        this.memberName = memberName;
+        this.number = number;
     }
 
     public String getAction() {
@@ -24,17 +24,17 @@ public class EventMemberDTO extends EventDTO {
         this.action = action;
     }
 
-    public String getMemberName() {
-        return memberName;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     @Override
     public String toString() {
         String actionCapitalized = action.substring(0, 1).toUpperCase() + action.substring(1);
-        return "- "+actionCapitalized+" a member named "+memberName+" in "+getRepoName();
+        return "- "+actionCapitalized+" a comment review for pull request number "+number+" in "+getRepoName();
     }
 }

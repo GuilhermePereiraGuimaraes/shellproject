@@ -20,7 +20,7 @@ public class EventService {
     }
 
     public List<String> transFromDTO(List<EventDTO> dtos){
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<EventDTO> list = new ArrayList<>();
         Map<String, EventPushDTO> map = dtos
                 .stream().filter(eventDTO -> eventDTO.getEventType() == EventType.PUSH)
                 .toList()
@@ -40,16 +40,17 @@ public class EventService {
                         LinkedHashMap::new
                 ));
 
-        List<EventPushDTO> pushEvents = new ArrayList<>(map.values());
+        list.addAll(new ArrayList<>(map.values()));
 
-        dtos = dtos.stream().filter(eventDTO -> eventDTO.getEventType() != EventType.PUSH).toList();
+        dtos = dtos.stream()
+                .filter(eventDTO -> eventDTO.getEventType() != EventType.PUSH)
+                .toList();
 
+        for(EventDTO dto : dtos){
 
+        }
 
-//        for(EventDTO dto : dtos){
-//
-//        }
-        return pushEvents.stream().map(EventPushDTO::toString).toList();
+        return list.stream().map(EventDTO::toString).toList();
     }
 
 }

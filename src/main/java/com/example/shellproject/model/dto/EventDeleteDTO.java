@@ -32,4 +32,10 @@ public class EventDeleteDTO extends EventDTO{
     public void setRefType(String refType) {
         this.refType = refType;
     }
+
+    @Override
+    public String toString() {
+        String conditionalText = getRefType().equals("repository") ? "the " + getRefType() + " " : "a "+ getRefType()+" to";
+        return "- Deleted "+conditionalText+" "+getRepoName();
+    }
 }

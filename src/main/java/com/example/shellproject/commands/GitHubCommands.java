@@ -1,6 +1,7 @@
 package com.example.shellproject.commands;
 
 import com.example.shellproject.model.Event;
+import com.example.shellproject.model.dto.EventDTO;
 import com.example.shellproject.model.mapper.EventMapper;
 import com.example.shellproject.service.EventService;
 import org.springframework.shell.command.annotation.Command;
@@ -25,17 +26,17 @@ public class GitHubCommands {
     }
 
     @Command(command = "github-activity")
-    public List<?> githubActivity(@Option(required = true, description = "github username") String user){
+    public void githubActivity(@Option(required = true, description = "github username") String user){
         String url = String.format(URL_BASE, user);
         try {
-            return service.transFromDTO(Objects.requireNonNull(webClient
+             service.transFromDTO(Objects.requireNonNull(webClient
                     .get()
                     .uri(url)
                     .retrieve()
                     .bodyToFlux(Event.class)
                     .map(EventMapper::toDTO)
                     .collectList()
-                    .block()));
+                    .block())).forEach(System.out::println);
         }
         catch (Exception e) {
             throw new RuntimeException(e);

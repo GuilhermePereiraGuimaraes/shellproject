@@ -31,4 +31,9 @@ public class EventMapper {
     public static EventPushDTO toDTOForPushDTO(EventDTO event) {
         return new EventPushDTO(event.getActor(), event.getEventType(), event.getRepoName(), event.getPayload());
     }
+
+    public static EventIssueCommentDTO toDTOForIssueCommentDTO(EventDTO event) {
+        return new EventIssueCommentDTO(event.getActor(), event.getEventType(), event.getRepoName(), event.getPayload(),Integer.parseInt(event.getPayload().path("issue").path("number").asText(null)));
+
+    }
 }

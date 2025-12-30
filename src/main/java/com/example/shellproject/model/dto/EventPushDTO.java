@@ -25,9 +25,7 @@ public class EventPushDTO extends EventDTO {
 
     @Override
     public String toString() {
-        return "EventPushDTO{" +
-                "counter=" + counter + ", "
-                +super.toString() +
-                '}';
+        String singularOrPlural = counter > 1 ? counter + " commits" : "a commit";
+        return "- Pushed "+singularOrPlural+" to "+getRepoName();
     }
 }
