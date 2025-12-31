@@ -31,4 +31,10 @@ public class EventReleaseDTO extends EventDTO {
     public void setTagName(String tagName) {
         this.tagName = tagName;
     }
+
+    @Override
+    public String toString() {
+        String actionCapitalized = action.substring(0, 1).toUpperCase() + action.substring(1);
+        return "- "+actionCapitalized+" version "+tagName+" for "+getRepoName();
+    }
 }

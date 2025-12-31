@@ -42,4 +42,10 @@ public class GitHubCommands {
             throw new RuntimeException(e);
         }
     }
+
+    @Command(command = "exit")
+    public void exit() {
+        System.out.println("Exiting the application...");
+        System.exit(0);
+    }
 }

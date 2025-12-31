@@ -3,17 +3,17 @@ package com.example.shellproject.model.dto;
 import com.example.shellproject.util.EventType;
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class EventDiscussionDTO extends EventDTO {
+public class EventWatchDTO extends EventDTO{
 
-    public EventDiscussionDTO() {
+    public EventWatchDTO() {
     }
 
-    public EventDiscussionDTO(String actor, EventType eventType, String repoName, JsonNode payload) {
+    public EventWatchDTO(String actor, EventType eventType, String repoName, JsonNode payload) {
         super(actor, eventType, repoName, payload);
     }
 
     @Override
     public String toString() {
-        return "- Discussion created in "+getRepoName();
+        return "- Starred the repository named "+getRepoName();
     }
 }
