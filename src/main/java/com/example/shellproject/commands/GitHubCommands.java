@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 @ShellComponent
-@Command(group = "github")
+@Command(group = "github", command = "github")
 public class GitHubCommands {
 
     private final EventService service;
@@ -25,7 +25,7 @@ public class GitHubCommands {
         this.service = service;
     }
 
-    @Command(command = "github-activity")
+    @Command(command = "activity")
     public void githubActivity(@Option(required = true, description = "github username") String user){
         String url = String.format(URL_BASE, user);
         try {
@@ -43,9 +43,4 @@ public class GitHubCommands {
         }
     }
 
-    @Command(command = "exit")
-    public void exit() {
-        System.out.println("Exiting the application...");
-        System.exit(0);
-    }
 }
